@@ -1,0 +1,29 @@
+{
+  "name": "learning-react",
+  "description": "[subarta mondal](https://subratamondal.netlify.app)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel 04-render_multiple_element/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subratamondal1029/React_Learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subratamondal1029/React_Learning/issues"
+  },
+  "homepage": "https://github.com/subratamondal1029/React_Learning#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
