@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.basket{
+    line-height: 23px;
+}
+
+.appleNumCon span{
+    font-weight: bold;
+    color: brown;
+}
+
+#buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.arrowBtn{
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    background: transparent;
+}
+
+.arrowBtn img{
+    width: 60px;
+}

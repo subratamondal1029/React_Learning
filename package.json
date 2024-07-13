@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel 04-render_multiple_element/index.html"
+    "start": "parcel 06-Event_Handling/index.html"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/subratamondal1029/React_Learning.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Subarta Mondal",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/subratamondal1029/React_Learning/issues"
