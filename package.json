@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel 06-Event_Handling/index.html"
+    "start": "parcel 07-Apple_shifter_useSate/index.html"
   },
   "repository": {
     "type": "git",
