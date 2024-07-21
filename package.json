@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel 12-useEffect/index.html --open firefox"
+    "start": "parcel 11-countryList_project/index.html --open firefox"
   },
   "repository": {
     "type": "git",

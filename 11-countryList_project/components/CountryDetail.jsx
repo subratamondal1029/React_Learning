@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import data from "../data.js";
 import BorderButton from "./countryDetailComponents/BorderButton.jsx";
 import OtherDetails from "./countryDetailComponents/OtherDetails.jsx";
@@ -39,14 +40,10 @@ const CountryDetail = ({ theme }) => {
   return (
     <main className={theme}>
       <div id="detailsContainer">
-        <button
-          id="backBtn"
-          className={theme}
-          onClick={() => (window.location.href = "/")}
-        >
+        <Link id="backBtn" className={theme} to="/">
           <i className="fa-solid fa-arrow-left"></i>
           <span>Back</span>
-        </button>
+        </Link>
 
         <div id="countryDetailsCon">
           <img src={country.flag} alt={country.name} />
@@ -60,12 +57,15 @@ const CountryDetail = ({ theme }) => {
 
             <div id="borderContainer">
               <div className="otherDetails">Border Countries: </div>
-              {
-                country.borders ?
-                data.filter((countryDetails) => country.borders.includes(countryDetails.alpha3Code))
-                .map((country) => <BorderButton countryName={country.name} theme={theme} />)
-                : null
-              }
+              {country.borders
+                ? data
+                    .filter((countryDetails) =>
+                      country.borders.includes(countryDetails.alpha3Code)
+                    )
+                    .map((country) => (
+                      <BorderButton countryName={country.name} theme={theme} />
+                    ))
+                : null}
             </div>
           </div>
         </div>

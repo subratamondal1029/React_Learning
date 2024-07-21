@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom"
+
 const BorderButton = ({countryName, theme}) => {
   return (
-   <a href={`/countryDetail?countryName=${countryName}`}><button className={`borderCountry ${theme}`}>{countryName}</button></a> 
+   <Link to={`/countryDetail?countryName=${countryName}`}><button className={`borderCountry ${theme}`}>{countryName}</button></Link>
   )
 }
 

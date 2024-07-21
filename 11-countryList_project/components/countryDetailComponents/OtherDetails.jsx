@@ -12,7 +12,7 @@ function handleMultipleValues(){
   return (
     <div className="otherDetails" key={Unikey}>
       {detailTitle}: <span className="otherValue">{
-        typeof detailValue[0] === "object" ? handleMultipleValues() : detailValue
+        detailValue && typeof detailValue[0] === "object" ? handleMultipleValues() : detailValue
     }</span>
     </div>
   );

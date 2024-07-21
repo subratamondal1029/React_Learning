@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom"
+
 const Country = ({Unikey, countryName, flag, population, region, capital, theme}) => {
   return (
-    <a className={`country ${theme}`} key={Unikey} href={`/countryDetail?countryName=${countryName}`}>
+    <Link className={`country ${theme}`} key={Unikey} to={`/countryDetail?countryName=${countryName}`}>
     <img src={flag} alt={countryName} />
     <div className="countryDetails">
         <h5 className="countryName">{countryName}</h5>
@@ -10,7 +12,7 @@ const Country = ({Unikey, countryName, flag, population, region, capital, theme}
             <div className="otherDetails">Capital: <span className="otherValue">{capital}</span></div>
         </div>
     </div>
-</a>
+</Link>
   )
 }
 
