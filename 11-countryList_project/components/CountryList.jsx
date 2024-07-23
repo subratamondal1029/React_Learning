@@ -20,23 +20,22 @@ const CountryList = ({ query, theme }) => {
       : country.region.toLowerCase().includes(query.region.toLowerCase());
   }).map((country, i) => (
     <Country
-      Unikey={country.name.common}
+      key={country.name.common}
       countryName={country.name.common}
       flag={country.flags.svg}
       population={country.population}
       region={country.region}
       capital={country.capital}
       theme={`${theme}Mode`}
+      data={country}
     />
   ));
 
-  let simmerCard = []
-  for (let i = 0; i < 10; i++) {
-    simmerCard.push(<HomeSemer theme={theme}/>)
-  }
+  const simmerCard =  Array.from({length:10})
+  .map((it, i) => <HomeSemer theme={theme} key={i+260}/>)
 
   return <div id="countryContainer">{
-    filteredCountries.length === 0 ? simmerCard : filteredCountries
+    !filteredCountries.length ? simmerCard : filteredCountries
 
   }</div>;
 };

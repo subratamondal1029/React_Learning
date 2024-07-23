@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 
-const Country = ({Unikey, countryName, flag, population, region, capital, theme}) => {
+const Country = ({countryName, flag, population, region, capital, theme, data}) => {
   return (
-    <Link className={`country ${theme}`} key={Unikey} to={`/${countryName}`}>
+    <Link className={`country ${theme}`} to={`/${countryName}`} state={data}>
     <img src={flag} alt={countryName} />
     <div className="countryDetails">
         <h5 className="countryName">{countryName}</h5>

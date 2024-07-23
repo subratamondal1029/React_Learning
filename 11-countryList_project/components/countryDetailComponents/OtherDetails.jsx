@@ -12,7 +12,7 @@ const OtherDetails = ({detailTitle, detailValue, Unikey}) => {
   }
 
   return (
-    <div className="otherDetails" key={Unikey}>
+    <div className="otherDetails">
       {detailTitle}: <span className="otherValue">{detailValue}</span>
     </div>
   );

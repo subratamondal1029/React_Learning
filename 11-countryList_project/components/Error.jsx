@@ -2,11 +2,9 @@ import { useRouteError } from "react-router-dom"
 import Styles from "./Errorpage.module.css"
 
 const Error = () => {
-    const errorDetail = useRouteError()
-    console.log(errorDetail);
   return (
     <div className={Styles.container}>
-      <h1 className={Styles.heading}>{errorDetail.status}</h1>
+      <h1 className={Styles.heading}>404</h1>
       <p className={Styles.message}>
         Oops! The page you're looking for doesn't exist.
       </p>

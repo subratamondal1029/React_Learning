@@ -1,17 +1,29 @@
-import { Link, useParams } from "react-router-dom";
-import data from "../data.js";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import BorderButton from "./countryDetailComponents/BorderButton.jsx";
 import OtherDetails from "./countryDetailComponents/OtherDetails.jsx";
 import { useEffect, useState } from "react";
+import CountryDetailShimmer from "./countryDetailComponents/CountryDetailShimmer.jsx";
 
 const CountryDetail = ({ theme }) => {
   const {countryDetail: countryName} = useParams()
   const [country, setcountryDetails] = useState({})
+  const {state} = useLocation()
+  const navigate = useNavigate()
   
   useEffect(() =>{
-    fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
-    .then((res) => res.json())
-    .then(([data]) => {
+    if (state) {
+      printdetails(state)
+    }else{
+      fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
+      .then((res) => res.json())
+      .then(([data]) => {
+        printdetails(data)
+      }).catch(() => {
+        navigate('/error');
+      })
+    }
+
+    function printdetails(data){
       const countryDetails ={
         name: data.name.common,
         flag: data.flags.svg,
@@ -38,7 +50,7 @@ const CountryDetail = ({ theme }) => {
             setcountryDetails((prev) => ({...prev, borders: countryName}))
           })
       }
-    })
+    }
   },[countryName])
 
   const countryDetails1 = [
@@ -53,7 +65,7 @@ const CountryDetail = ({ theme }) => {
     return (
       Object.keys(country).length !== 0 &&
       <OtherDetails
-        Unikey={Date.now()}
+        key={i}
         detailTitle={data.replaceAll("_", " ")}
         detailValue={country[data.replaceAll("_", "")]}
       />
@@ -67,7 +79,7 @@ const CountryDetail = ({ theme }) => {
     return (
       Object.keys(country).length !== 0 &&
       <OtherDetails
-        Unikey={Date.now()}
+        key={i+100}
         detailTitle={data.replaceAll("_", " ")}
         detailValue={country[data.replaceAll("_", "")]}
       />
@@ -75,8 +87,9 @@ const CountryDetail = ({ theme }) => {
   });
 
   return (
-    Object.keys(country).length !== 0 &&
     <main className={theme}>
+      {
+         Object.keys(country).length ?
       <div id="detailsContainer">
         <Link id="backBtn" className={theme} to="/">
           <i className="fa-solid fa-arrow-left"></i>
@@ -92,21 +105,23 @@ const CountryDetail = ({ theme }) => {
               <div>{detailsArr1}</div>
               <div>{detailsArr2}</div>
             </div>
-            {country.borders.length !==0 ?
+            {
+            country?.borders.length !== 0  ?
             <div id="borderContainer">
               <div className="otherDetails">Border Countries: </div>
               {
-                country.borders.map((border) =>{
-                return  <BorderButton countryName={border} theme={theme} />
+                country.borders.map((border, i) =>{
+                return  <BorderButton key={i+500} countryName={border} theme={theme} />
                 })
               }
                
             </div>
-             : null}
+             : null
+            }
           </div>
         </div>
-      </div>
-    </main>
+      </div>: <CountryDetailShimmer theme={theme}/>}
+    </main> 
   );
 };
 

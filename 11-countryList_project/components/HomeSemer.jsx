@@ -1,8 +1,8 @@
 const HomeSemer = ({theme}) => {
   return (
-    <div className={`country ${theme}`} key={Date.now()} style={{
+    <div className={`country ${theme}`} style={{
       backgroundColor:"gray",
-      height: '500px'
+      height: '460px'
     }}>
     <div className="countryDetails">
     </div>

@@ -324,6 +324,10 @@ main.darkMode .otherValue {
   header h1 {
     font-size: 18px;
   }
+
+  #homeContainer{
+    padding-inline: 45px;
+  }
 }
 
 /* promotional links */

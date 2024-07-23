@@ -1,0 +1,24 @@
+.simmerBox{
+    background-color: gray;
+    padding: 10px;
+    width: 130px;
+    border-radius: 10px;
+}
+
+h5.simmerBox {
+    padding: 15px;
+    width: 160px;
+}
+
+.simmerBox.image{
+    width: 500px;
+    height: 350px;
+}
+
+.shimmerCon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}

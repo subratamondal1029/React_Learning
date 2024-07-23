@@ -19,7 +19,11 @@ const router = createBrowserRouter([
         {
             path: "/:countryDetail",
             element: <CountryDetail theme={'darkMode'}/>
-        }
+        },
+        {
+            path: "/error",
+            element: <Error />
+        },
       ],
     }
     
