@@ -1,11 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import data from "../data.js";
 import BorderButton from "./countryDetailComponents/BorderButton.jsx";
 import OtherDetails from "./countryDetailComponents/OtherDetails.jsx";
+import { useEffect, useState } from "react";
 
 const CountryDetail = ({ theme }) => {
-  const countryName = new URLSearchParams(location.search).get("countryName");
-  const country = data.filter((country) => country.name === countryName)[0];
+  const {countryDetail: countryName} = useParams()
+  const [country, setcountryDetails] = useState({})
+  
+  useEffect(() =>{
+    fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
+    .then((res) => res.json())
+    .then(([data]) => {
+      const countryDetails ={
+        name: data.name.common,
+        flag: data.flags.svg,
+        nativeName: Object.values(data.name.nativeName)[0].common,
+        population: data.population,
+        region: data.region,
+        subregion: data.subregion,
+        capital: data.capital ?  data.capital[0] : "NA",
+        topLevelDomain: data.tld[0],
+        currencies: data.currencies,
+        languages: data.languages,
+        borders: []
+      }
+      setcountryDetails(countryDetails)
+
+      if (data.borders) {
+        Promise.all(data.borders.map((border) =>{
+          return fetch(`https://restcountries.com/v3.1/alpha?codes=${border}`)
+          .then(res => res.json())
+          .then(([data]) => {
+            return data.name.common
+          })
+          })).then(countryName =>{
+            setcountryDetails((prev) => ({...prev, borders: countryName}))
+          })
+      }
+    })
+  },[countryName])
 
   const countryDetails1 = [
     "native_Name",
@@ -17,11 +51,13 @@ const CountryDetail = ({ theme }) => {
 
   const detailsArr1 = countryDetails1.map((data, i) => {
     return (
+      Object.keys(country).length !== 0 &&
       <OtherDetails
-        Unikey={i}
+        Unikey={Date.now()}
         detailTitle={data.replaceAll("_", " ")}
         detailValue={country[data.replaceAll("_", "")]}
       />
+      
     );
   });
 
@@ -29,8 +65,9 @@ const CountryDetail = ({ theme }) => {
 
   const detailsArr2 = countryDetails2.map((data, i) => {
     return (
+      Object.keys(country).length !== 0 &&
       <OtherDetails
-        Unikey={i + 6}
+        Unikey={Date.now()}
         detailTitle={data.replaceAll("_", " ")}
         detailValue={country[data.replaceAll("_", "")]}
       />
@@ -38,6 +75,7 @@ const CountryDetail = ({ theme }) => {
   });
 
   return (
+    Object.keys(country).length !== 0 &&
     <main className={theme}>
       <div id="detailsContainer">
         <Link id="backBtn" className={theme} to="/">
@@ -54,19 +92,17 @@ const CountryDetail = ({ theme }) => {
               <div>{detailsArr1}</div>
               <div>{detailsArr2}</div>
             </div>
-
+            {country.borders.length !==0 ?
             <div id="borderContainer">
               <div className="otherDetails">Border Countries: </div>
-              {country.borders
-                ? data
-                    .filter((countryDetails) =>
-                      country.borders.includes(countryDetails.alpha3Code)
-                    )
-                    .map((country) => (
-                      <BorderButton countryName={country.name} theme={theme} />
-                    ))
-                : null}
+              {
+                country.borders.map((border) =>{
+                return  <BorderButton countryName={border} theme={theme} />
+                })
+              }
+               
             </div>
+             : null}
           </div>
         </div>
       </div>

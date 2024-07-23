@@ -1,19 +1,19 @@
 import React from "react";
 
 const OtherDetails = ({detailTitle, detailValue, Unikey}) => {
-function handleMultipleValues(){
-  if (detailValue.length !== 1) {
-    return detailValue.map((value) => `${value.name} `)
-    
-  }else return detailValue[0].name
-}
-
+  if (typeof detailValue === "object") {
+    if (detailTitle === "languages") {
+      detailValue = Object.values(detailValue).join(', ')
+    }else{
+     detailValue =  Object.values(detailValue).map((value) =>{
+        return value.name
+      }).join(', ')
+    }
+  }
 
   return (
     <div className="otherDetails" key={Unikey}>
-      {detailTitle}: <span className="otherValue">{
-        detailValue && typeof detailValue[0] === "object" ? handleMultipleValues() : detailValue
-    }</span>
+      {detailTitle}: <span className="otherValue">{detailValue}</span>
     </div>
   );
 };

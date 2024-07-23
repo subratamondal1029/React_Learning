@@ -1,18 +1,28 @@
+import { useEffect, useState } from "react";
 import Country from "./Country";
-import CountryData from "../data";
 import HomeSemer from "./HomeSemer";
 
 const CountryList = ({ query, theme }) => {
 
+  const [CountryData, setCountryData] = useState([])
+
+  useEffect(() =>{
+    fetch('https://restcountries.com/v3.1/all')
+    .then(res => res.json())
+    .then(data => {
+     setCountryData(data)
+    })
+  },[])
+
   const filteredCountries = CountryData.filter((country) => {
     return query.name
-      ? country.name.toLowerCase().includes(query.name.toLowerCase())
+      ? country.name.common.toLowerCase().includes(query.name.toLowerCase())
       : country.region.toLowerCase().includes(query.region.toLowerCase());
   }).map((country, i) => (
     <Country
-      key={i}
-      countryName={country.name}
-      flag={country.flag}
+      Unikey={country.name.common}
+      countryName={country.name.common}
+      flag={country.flags.svg}
       population={country.population}
       region={country.region}
       capital={country.capital}
@@ -22,7 +32,7 @@ const CountryList = ({ query, theme }) => {
 
   let simmerCard = []
   for (let i = 0; i < 10; i++) {
-    simmerCard.push(<HomeSemer Unikey={i+1} theme={theme}/>)
+    simmerCard.push(<HomeSemer theme={theme}/>)
   }
 
   return <div id="countryContainer">{

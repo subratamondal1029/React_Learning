@@ -17,7 +17,7 @@ const router = createBrowserRouter([
             element: <Home />
         },
         {
-            path: "/countryDetail",
+            path: "/:countryDetail",
             element: <CountryDetail theme={'darkMode'}/>
         }
       ],

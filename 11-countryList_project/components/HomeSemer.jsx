@@ -1,12 +1,12 @@
-import React from 'react'
-
-const HomeSemer = ({theme, Unikey}) => {
+const HomeSemer = ({theme}) => {
   return (
-    <div className={`country ${theme}`} key={Unikey}>
-    <img src={flag} alt={countryName} />
+    <div className={`country ${theme}`} key={Date.now()} style={{
+      backgroundColor:"gray",
+      height: '500px'
+    }}>
     <div className="countryDetails">
     </div>
-</div>
+    </div>
   )
 }
 
