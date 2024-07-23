@@ -1,15 +1,17 @@
 import Nav from "./Nav";
 import CountryList from "./CountryList";
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 const Home = () => {
-   const themeState = [{themeColor:'dark'}]
     const queryState = useState({ name: "", region: "" });
+    const isDark = useOutletContext()
+
   return (
-    <main className={`${themeState[0].themeColor}Mode`}>
+    <main className={isDark ? "dark" : ""}>
         <div id="homeContainer">
-          <Nav queryState={queryState} theme={themeState[0].themeColor}/>
-          <CountryList query={queryState[0]} theme={themeState[0].themeColor}/>
+          <Nav queryState={queryState}/>
+          <CountryList query={queryState[0]}/>
         </div>
       </main>
   )

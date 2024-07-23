@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Country from "./Country";
 import HomeSemer from "./HomeSemer";
 
-const CountryList = ({ query, theme }) => {
+const CountryList = ({ query }) => {
 
   const [CountryData, setCountryData] = useState([])
 
@@ -26,13 +26,12 @@ const CountryList = ({ query, theme }) => {
       population={country.population}
       region={country.region}
       capital={country.capital}
-      theme={`${theme}Mode`}
       data={country}
     />
   ));
 
   const simmerCard =  Array.from({length:10})
-  .map((it, i) => <HomeSemer theme={theme} key={i+260}/>)
+  .map((it, i) => <HomeSemer key={i+260}/>)
 
   return <div id="countryContainer">{
     !filteredCountries.length ? simmerCard : filteredCountries

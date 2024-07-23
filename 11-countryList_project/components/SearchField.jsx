@@ -1,8 +1,8 @@
-const SearchField = ({ queryState, mode }) => {
+const SearchField = ({ queryState }) => {
   const [query, setQuery] = queryState
   
   return (
-    <div id="inputField" className={mode}>
+    <div id="inputField" >
       <i className="fa-solid fa-magnifying-glass"></i>
       <input
         type="text"

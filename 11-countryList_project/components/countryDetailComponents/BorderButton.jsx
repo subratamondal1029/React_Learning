@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 
-const BorderButton = ({countryName, theme}) => {
+const BorderButton = ({countryName}) => {
   return (
-   <Link to={`/${countryName}`}><button className={`borderCountry ${theme}`}>{countryName}</button></Link>
+   <Link to={`/${countryName}`}><button className={`borderCountry`}>{countryName}</button></Link>
   )
 }
 

@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         },
         {
             path: "/:countryDetail",
-            element: <CountryDetail theme={'darkMode'}/>
+            element: <CountryDetail />
         },
         {
             path: "/error",

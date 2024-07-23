@@ -1,6 +1,6 @@
-const HomeSemer = ({theme}) => {
+const HomeSemer = () => {
   return (
-    <div className={`country ${theme}`} style={{
+    <div className={`country`} style={{
       backgroundColor:"gray",
       height: '460px'
     }}>

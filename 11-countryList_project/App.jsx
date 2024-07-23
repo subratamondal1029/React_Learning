@@ -4,11 +4,12 @@ import { Outlet } from "react-router-dom";
 
 
 const App = () => {
-  const themeState = useState({buttonclass: "fa-solid", themeColor: "dark"});
+  const [isDark, setisDark] = useState(JSON.parse(localStorage.getItem('isDark')));
+
   return (
     <>
-      <Header themeState={themeState}/>
-    <Outlet />
+      <Header theme={[isDark, setisDark]}/>
+    <Outlet context={isDark}/>
     </>
   );
 };

@@ -1,14 +1,15 @@
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams, useOutletContext } from "react-router-dom";
 import BorderButton from "./countryDetailComponents/BorderButton.jsx";
 import OtherDetails from "./countryDetailComponents/OtherDetails.jsx";
 import { useEffect, useState } from "react";
 import CountryDetailShimmer from "./countryDetailComponents/CountryDetailShimmer.jsx";
 
-const CountryDetail = ({ theme }) => {
+const CountryDetail = () => {
   const {countryDetail: countryName} = useParams()
   const [country, setcountryDetails] = useState({})
   const {state} = useLocation()
   const navigate = useNavigate()
+  const isDark = useOutletContext()
   
   useEffect(() =>{
     if (state) {
@@ -87,11 +88,11 @@ const CountryDetail = ({ theme }) => {
   });
 
   return (
-    <main className={theme}>
+    <main className={isDark ? "dark" : ""}>
       {
          Object.keys(country).length ?
       <div id="detailsContainer">
-        <Link id="backBtn" className={theme} to="/">
+        <Link id="backBtn" to="/">
           <i className="fa-solid fa-arrow-left"></i>
           <span>Back</span>
         </Link>
@@ -111,7 +112,7 @@ const CountryDetail = ({ theme }) => {
               <div className="otherDetails">Border Countries: </div>
               {
                 country.borders.map((border, i) =>{
-                return  <BorderButton key={i+500} countryName={border} theme={theme} />
+                return  <BorderButton key={i+500} countryName={border} />
                 })
               }
                
@@ -120,7 +121,7 @@ const CountryDetail = ({ theme }) => {
             }
           </div>
         </div>
-      </div>: <CountryDetailShimmer theme={theme}/>}
+      </div>: <CountryDetailShimmer/>}
     </main> 
   );
 };

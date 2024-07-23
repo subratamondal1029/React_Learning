@@ -1,11 +1,11 @@
 import SearchField from "./SearchField"
 import SortField from "./SortField"
 
-const Nav = ({queryState, theme}) => {
+const Nav = ({queryState}) => {
   return (
     <nav>
-        <SearchField queryState={queryState} mode={`${theme}Mode`}/>
-        <SortField queryState={queryState} mode={`${theme}Mode`}/>
+        <SearchField queryState={queryState}/>
+        <SortField queryState={queryState}/>
     </nav>
   )
 }

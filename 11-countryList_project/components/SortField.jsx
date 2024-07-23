@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SortField = ({queryState, mode}) => {
+const SortField = ({queryState}) => {
   const [sortOptionelm, setsortOptionelm] = useState(false)
   const [selectRegion, setSelectRegion] = useState("Filter By Region")
   const [query, setQuery] = queryState
@@ -20,11 +20,11 @@ const SortField = ({queryState, mode}) => {
   }
 
   return (
-    <div id="sortByField" className={mode} onClick={getFilterOption}>
+    <div id="sortByField"  onClick={getFilterOption}>
       <p>{selectRegion}</p>
       <i className="fa-solid fa-caret-down"></i>
 
-     {sortOptionelm && <div id="sortOptions" className={mode}>
+     {sortOptionelm && <div id="sortOptions">
         <div className="option">Africa</div>
         <div className="option">America</div>
         <div className="option">Asia</div>
