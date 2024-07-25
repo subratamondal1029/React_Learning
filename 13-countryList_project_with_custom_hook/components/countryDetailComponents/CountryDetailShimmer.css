@@ -1,0 +1,51 @@
+main .shimmer{
+    --elements-color: hsl(0, 0%, 78%);
+    display: flex;
+    gap: 10px;
+}
+main.dark .shimmer{
+    --elements-color: hsl(209, 23%, 22%);
+}
+
+.shimmer .flag {
+    width: 40%;
+    height: 240px;
+    background-color: var(--elements-color);
+    border-radius: 4px;
+  }
+  
+  .shimmer .title {
+    height: 36px;
+    background-color: var(--elements-color);
+    border-radius: 4px;
+    width: 90%;
+  }
+  
+  .country-details.shimmer p {
+    height: 22px;
+    width: 90%;
+    background-color: var(--elements-color);
+    border-radius: 2px;
+    margin-block: 1rem;
+  }
+  
+  .country-details.shimmer p:last-child {
+    width: 50%;
+  }
+  
+  .details-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 80%;
+    flex-grow: 1;
+  }
+  
+  @media (max-width: 940px) {
+    .shimmer .flag, .details-text-container {
+      width: 100%;
+      max-width: 400px;
+    }
+    
+  }

@@ -1,0 +1,358 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(200, 15%, 8%);
+  font-size: 14px;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+a {
+  color: #111517;
+}
+
+main {
+  width: 100%;
+  min-height: calc(100vh - 74px);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 70px;
+  height: 10vh;
+  box-shadow: 0px -5px 10px 0.2px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+
+header h1 {
+  font-weight: 800;
+  font-size: 23px;
+}
+header span {
+  font-weight: 600;
+  font-size: 18px;
+  user-select: none;
+}
+
+#themeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+#themeContainer i {
+  font-size: 20px;
+}
+
+#homeContainer {
+  padding-inline: 80px;
+  padding-block: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin-top: 25px;
+  row-gap: 15px;
+}
+
+#inputField {
+  padding: 12px 22px;
+}
+
+#inputField input {
+  border: none;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  background: transparent;
+  outline: none;
+  padding: 7px 20px;
+  width: 50vmin;
+  color: hsl(0, 0%, 52%);
+}
+
+#inputField i {
+  font-size: 20px;
+  color: hsl(0, 0%, 52%);
+}
+
+#sortByField,
+#inputField {
+  background-color: white;
+  color: black;
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sortByField {
+  outline: none;
+  border: none;
+  padding: 18px 20px;
+  font-weight: 400;
+  gap: 40px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+#sortOptions {
+  cursor: default;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  z-index: 10;
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+#sortOptions.showOption {
+  display: flex;
+}
+
+#sortOptions .option {
+  text-align: left;
+  padding-inline: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#sortOptions .option:hover {
+  filter: contrast(50%);
+}
+
+#countryContainer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  row-gap: 75px;
+}
+
+#countryContainer .country {
+  text-decoration: none;
+  flex-basis: 265px;
+  max-height: 365px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+#countryContainer .country:hover {
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+#countryContainer .country img {
+  width: 100%;
+  height: 172px;
+  object-fit: cover;
+  border-bottom: 1px solid #0000000f;
+  border-radius: 8px 8px 0 0;
+}
+
+#countryContainer .country .countryDetails {
+  padding: 20px;
+  padding-top: 0;
+}
+
+.country .countryName {
+  font-size: 22px;
+  font-weight: 800;
+  padding-block: 20px;
+}
+
+.countryDetails .otherDetails {
+  text-transform: capitalize;
+  padding-block: 5px;
+  font-weight: 600;
+}
+
+.countryDetails .otherValue {
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+#detailsContainer {
+  padding-inline: 40px 0;
+  padding-bottom: 30px;
+}
+
+#detailsContainer #backBtn {
+  text-decoration: none;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 35px;
+  font-size: 16px;
+  background-color: white;
+  border: none;
+  box-shadow: var(--shadow);
+  border-radius: 7px;
+  cursor: pointer;
+  margin-block: 70px;
+}
+
+#detailsContainer #backBtn i {
+  transition: all 0.4s ease-in-out;
+}
+
+#detailsContainer #backBtn:hover i {
+  transform: translateX(-6px);
+}
+
+#detailsContainer #backBtn i {
+  font-size: 20px;
+  padding-inline: 6px;
+}
+
+#detailsContainer #countryDetailsCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+#detailsContainer #countryDetailsCon img {
+  max-width: 560px;
+  width: 90%;
+}
+
+#countryDetailsCon .countryDetails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#countryDetailsCon .countryDetails #otherDetailsCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+#countryDetailsCon .countryName {
+  font-size: 40px;
+}
+
+#countryDetailsCon .otherDetails {
+  font-size: 17px;
+}
+
+#borderContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+#borderContainer .borderCountry {
+  box-shadow: var(--shadow);
+  background-color: #fff;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+main.dark {
+  background-color: hsl(207, 26%, 17%) !important;
+  color: hsl(0, 0%, 100%);
+}
+
+header.dark{
+  background-color: hsl(209, 23%, 22%);
+  color: #fff;
+}
+
+.dark #countryContainer .country,
+.dark #sortByField,
+.dark #detailsContainer #backBtn,
+.dark #borderContainer .borderCountry,
+.dark #inputField,
+.dark #sortOptions {
+  background-color: hsl(209, 23%, 22%);
+  color: #fff;
+}
+
+.dark .otherValue {
+  color: #ffffffb3;
+}
+
+@media screen and (max-width: 490px) {
+  #countryDetailsCon .countryDetails #otherDetailsCon {
+    flex-direction: column;
+  }
+
+  header {
+    padding-inline: 10px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  #homeContainer {
+    padding-inline: 45px;
+  }
+}
+
+/* promotional links */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 15px;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
